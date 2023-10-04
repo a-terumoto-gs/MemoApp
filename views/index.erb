@@ -1,0 +1,13 @@
+<div class="buttons">
+  <form method="GET" action="/memos/new">
+    <input type="submit" value="新規作成">
+  </form>
+</div>
+
+<ol>
+  <% @memos.each do |id, memo| %>
+    <li>
+      <a href="/memos/<%= id %>"><%= CGI.escapeHTML(memo["title"]) %></a>
+    </li>
+  <% end %>
+</ol>

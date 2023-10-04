@@ -1,0 +1,30 @@
+
+.buttons{
+  display: inline-block;
+  margin: 0px 10px;
+}
+
+.input-form{
+  display: flex;
+  margin-bottom: 10px; 
+  width: 50%; 
+  box-sizing: border-box;
+}
+
+textarea.input-form{
+  height: 150px;
+}
+
+.container{
+  display: flex;
+  flex-direction: column;
+}
+
+.update-button{
+  margin-top: 10px; 
+}
+
+.content{
+  border: 1px solid #000;
+  width: 50%; 
+}
