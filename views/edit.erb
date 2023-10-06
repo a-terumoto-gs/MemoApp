@@ -2,10 +2,10 @@
 <h2>編集</h2>
 <div class=container>
   <label for="title">タイトル</label>
-  <input type="text" id="title" name="title" value="<%= @title %>" class="input-form">
+  <input type="text" id="title" name="title" value="<%= @title.force_encoding("UTF-8") %>" class="input-form">
 
   <label for="content">内容</label>
-  <textarea id="content" name="content" class="input-form"><%= @content %></textarea>
+  <textarea id="content" name="content" class="input-form"><%= @content.force_encoding("UTF-8") %></textarea>
 </div>
 
 <div>
