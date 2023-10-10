@@ -5,14 +5,14 @@ require 'sinatra/reloader'
 require 'json'
 require 'cgi'
 
-DETA_STORAGE = 'public/deta.json'
+DATA_STORAGE = 'data/data.json'
 
 def fetch_memos
-  JSON.parse(File.read(DETA_STORAGE))
+  JSON.parse(File.read(DATA_STORAGE))
 end
 
 def update_memos(memos)
-  File.open(DETA_STORAGE, 'w') do |file|
+  File.open(DATA_STORAGE, 'w') do |file|
     JSON.dump(memos, file)
   end
 end

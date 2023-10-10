@@ -2,10 +2,10 @@
 <h2>編集</h2>
 <div class=container>
   <label for="title">タイトル</label>
-  <input type="text" id="title" name="title" value="<%= @title %>" class="input-form">
+  <input type="text" id="title" name="title" value="<%= CGI.escapeHTML(@title) %>" class="input-form">
 
   <label for="content">内容</label>
-  <textarea id="content" name="content" class="input-form"><%= @content %></textarea>
+  <textarea id="content" name="content" class="input-form"><%= CGI.escapeHTML(@content) %></textarea>
 </div>
 
 <div>
