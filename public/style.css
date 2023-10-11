@@ -28,3 +28,14 @@ textarea.input-form{
   border: 1px solid #000;
   width: 50%; 
 }
+
+.new-button{
+display: inline-block;
+width: auto;
+padding: 5px;
+background-color: buttonface;
+border: 1px solid #000;
+text-decoration: none;
+font-size: 15px;
+margin: 0px 10px;
+}
