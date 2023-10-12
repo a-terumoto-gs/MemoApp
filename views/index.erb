@@ -1,0 +1,11 @@
+<div>
+  <a href="/memos/new" class="new-button">新規作成</a>
+</div>
+
+<ol>
+  <% @memos.each do |id, memo| %>
+    <li>
+      <a href="/memos/<%= id %>"><%= CGI.escapeHTML(memo["title"]) %></a>
+    </li>
+  <% end %>
+</ol>
