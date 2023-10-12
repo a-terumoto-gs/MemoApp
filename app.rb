@@ -39,7 +39,7 @@ get '/memos/:id' do
 end
 
 get '/memos/:id/edit' do
-  memos = fetch_memo(params[:id])
+  memo = fetch_memo(params[:id])
   @title = memos[1]
   @content = memos[2]
   erb :edit
