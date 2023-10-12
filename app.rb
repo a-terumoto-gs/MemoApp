@@ -14,6 +14,7 @@ connect_db
 configure do
   result = @connect.exec("SELECT * FROM information_schema.tables WHERE table_name = 'memos'")
   @connect.exec('CREATE TABLE memos (id serial, title varchar(255), content text)') if result.values.empty?
+
 end
 
 def fetch_memo(id)
