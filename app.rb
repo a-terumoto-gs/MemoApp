@@ -23,7 +23,7 @@ def fetch_memo(id)
 end
 
 get '/memos' do
-  @memos = @connect&.exec('SELECT * FROM memos')
+  @memos = @connect.exec('SELECT * FROM memos ORDER BY id ASC')
   erb :index
 end
 
