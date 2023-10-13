@@ -14,7 +14,6 @@ connect_db
 configure do
   result = @connect.exec("SELECT * FROM information_schema.tables WHERE table_name = 'memos'")
   @connect.exec('CREATE TABLE memos (id serial, title varchar(255), content text)') if result.values.empty?
-
 end
 
 def fetch_memo(id)
@@ -39,7 +38,7 @@ get '/memos/:id' do
 end
 
 get '/memos/:id/edit' do
-  memo = fetch_memo(params[:id])
+  memos = fetch_memo(params[:id])
   @title = memos[1]
   @content = memos[2]
   erb :edit
