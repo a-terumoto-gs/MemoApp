@@ -5,12 +5,12 @@ require 'sinatra/reloader'
 require 'pg'
 require 'cgi'
 
-def connect_db
+def connect
   @connect ||= PG.connect(dbname: 'MemoApp')
 end
 
-before do	
-  connect_db	
+before do
+  connect
 end
 
 configure do
@@ -67,7 +67,7 @@ end
 
 delete '/memos/:id' do
   id = params[:id]
-  
+
   @connect.exec_params('DELETE FROM memos WHERE id = $1;', [id])
 
   redirect '/memos'
