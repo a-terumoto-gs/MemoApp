@@ -14,7 +14,7 @@ before do
 end
 
 configure do
-  @connect&.exec('CREATE TABLE IF NOT EXISTS memos (id serial, title varchar, content text)') 
+  @connect&.exec('CREATE TABLE IF NOT EXISTS memos (id serial, title varchar, content text)')
 end
 
 def fetch_memo(id)
