@@ -19,7 +19,7 @@ end
 
 def fetch_memo(id)
   result = @connect.exec_params('SELECT * FROM memos WHERE id = $1;', [id])
-  result.tuple_values(0)
+  result[0]
 end
 
 get '/memos' do
@@ -33,15 +33,19 @@ end
 
 get '/memos/:id' do
   memo = fetch_memo(params[:id])
-  @title = memo[1]
-  @content = memo[2]
+  @memo = {
+    title: memo['title'],
+    content: memo['content']
+  }
   erb :show
 end
 
 get '/memos/:id/edit' do
-  memos = fetch_memo(params[:id])
-  @title = memos[1]
-  @content = memos[2]
+  memo = fetch_memo(params[:id])
+  @memo = {
+    title: memo['title'],
+    content: memo['content']
+  }
   erb :edit
 end
 
@@ -52,6 +56,7 @@ post '/memos' do
   @connect.exec_params('INSERT INTO memos(title, content) VALUES ($1, $2);', [title, content])
 
   redirect '/memos'
+  # redirect '/memos/:id'
 end
 
 patch '/memos/:id' do
