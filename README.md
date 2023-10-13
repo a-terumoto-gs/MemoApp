@@ -10,7 +10,7 @@
 3. `git checkout dev-db`を実行し`main`ブランチから`dev-db`ブランチに移動
 4. `bundle install`を実行し、必要な`gem`のインストールを行う
 5. `sudo service postgresql start`でPostgreSQLサーバーを起動
-6. `psql postgres`でpostgresユーザでログイン(6,7はpostgres内での操作)
+6. `psql postgres`でデータベースpostgresにアクセス(7,8はpostgres内での操作)
 7. `create database MemoApp;`でDBを作成
 8. `\q`でpostgresから抜ける
 9. `bundle exec ruby app.rb`を実行
