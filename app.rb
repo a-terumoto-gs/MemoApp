@@ -14,7 +14,7 @@ before do
 end
 
 configure do
-  @connect.exec('CREATE TABLE IF NOT EXISTS memos (id serial, title varchar, content text)') 
+  @connect&.exec('CREATE TABLE IF NOT EXISTS memos (id serial, title varchar, content text)') 
 end
 
 def fetch_memo(id)
@@ -51,7 +51,7 @@ post '/memos' do
 
   @connect.exec_params('INSERT INTO memos(title, content) VALUES ($1, $2);', [title, content])
 
-  redirect '/memos/:id'
+  redirect '/memos'
 end
 
 patch '/memos/:id' do
