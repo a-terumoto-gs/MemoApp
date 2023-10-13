@@ -51,7 +51,7 @@ post '/memos' do
 
   @connect.exec_params('INSERT INTO memos(title, content) VALUES ($1, $2);', [title, content])
 
-  redirect '/memos'
+  redirect '/memos/:id'
 end
 
 patch '/memos/:id' do
