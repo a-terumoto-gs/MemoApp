@@ -6,7 +6,7 @@ require 'pg'
 require 'cgi'
 
 def connect
-  @connect ||= PG.connect(dbname: 'MemoApp')
+  @connect ||= PG.connect(dbname:'MemoApp')
 end
 
 before do
@@ -14,7 +14,7 @@ before do
 end
 
 configure do
-  @connect&.exec('CREATE TABLE IF NOT EXISTS memos (id serial, title varchar, content text)')
+  @connect&.exec('CREATE TABLE IF NOT EXISTS memos (id serial, title text, content text)')
 end
 
 def fetch_memo(id)
