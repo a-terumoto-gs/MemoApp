@@ -57,8 +57,8 @@ post '/memos' do
 
   result = @connect.exec('SELECT lastval()')
   id = result[0]['lastval']
-  #redirect '/memos'
-   redirect "/memos/#{id}"
+
+  redirect "/memos/#{id}"
 end
 
 patch '/memos/:id' do
