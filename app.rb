@@ -6,10 +6,12 @@ require 'pg'
 require 'cgi'
 
 def connect_db
-  @connect = PG.connect(dbname: 'MemoApp')
+  @connect ||= PG.connect(dbname: 'MemoApp')
 end
 
-connect_db
+before do	
+  connect_db	
+end
 
 configure do
   result = @connect.exec("SELECT * FROM information_schema.tables WHERE table_name = 'memos'")
@@ -64,7 +66,8 @@ patch '/memos/:id' do
 end
 
 delete '/memos/:id' do
-  id = params[id]
+  id = params[:id]
+  
   @connect.exec_params('DELETE FROM memos WHERE id = $1;', [id])
 
   redirect '/memos'
