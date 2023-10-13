@@ -55,8 +55,10 @@ post '/memos' do
 
   @connect.exec_params('INSERT INTO memos(title, content) VALUES ($1, $2);', [title, content])
 
-  redirect '/memos'
-  # redirect '/memos/:id'
+  result = @connect.exec('SELECT lastval()')
+  id = result[0]['lastval']
+  #redirect '/memos'
+   redirect "/memos/#{id}"
 end
 
 patch '/memos/:id' do
@@ -66,7 +68,7 @@ patch '/memos/:id' do
 
   @connect.exec_params('UPDATE memos SET title = $1, content = $2 WHERE id = $3;', [title, content, id])
 
-  redirect "/memos/#{params[:id]}"
+  redirect "/memos/#{id}"
 end
 
 delete '/memos/:id' do
