@@ -1,17 +1,15 @@
 <form method="POST" action="/memos/<%= params[:id] %>">
-<h2>編集</h2>
-<div class="container">
-  <label for="title">タイトル</label>
+  <h2>編集</h2>
+  <div class="container">
+    <label for="title">タイトル</label>
+    <input type="text" id="title" name="title" value="<%= CGI.escapeHTML(@title.force_encoding("UTF-8")) %>" class="input-form">
 
-  <input type="text" id="title" name="title" value="<%= CGI.escapeHTML(@title.force_encoding("UTF-8")) %>" class="input-form">
+    <label for="content">内容</label>
+    <textarea id="content" name="content" class="input-form"><%= CGI.escapeHTML(@content.force_encoding("UTF-8")) %></textarea>
+  </div>
 
-  <label for="content">内容</label>
-  <textarea id="content" name="content" class="input-form"><%= CGI.escapeHTML(@content.force_encoding("UTF-8")) %></textarea>
-
-</div>
-
-<div>
-  <input type="hidden" name="_method" value="PATCH">
-  <input type="submit" value="変更" class="update-button">
-</div>
+  <div>
+    <input type="hidden" name="_method" value="PATCH">
+    <input type="submit" value="変更" class="update-button">
+  </div>
 </form>
