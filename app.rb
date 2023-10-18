@@ -6,7 +6,7 @@ require 'pg'
 require 'cgi'
 
 def connect
-  @connect ||= PG.connect(dbname:'MemoApp')
+  @connect ||= PG.connect(dbname:'memoapp')
 end
 
 before do
