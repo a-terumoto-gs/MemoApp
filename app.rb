@@ -6,15 +6,11 @@ require 'pg'
 require 'cgi'
 
 def connect
-  @connect ||= PG.connect(dbname:'memoapp')
+  @connect ||= PG.connect(dbname: 'memoapp')
 end
 
 before do
   connect
-end
-
-configure do
-  @connect&.exec('CREATE TABLE IF NOT EXISTS memos (id serial, title text, content text)')
 end
 
 def fetch_memo(id)
@@ -23,6 +19,7 @@ def fetch_memo(id)
 end
 
 get '/memos' do
+  @connect.exec('CREATE TABLE IF NOT EXISTS memos (id serial PRIMARY KEY, title text, content text)')
   @memos = @connect.exec('SELECT * FROM memos ORDER BY id ASC')
   erb :index
 end
