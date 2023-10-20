@@ -45,10 +45,8 @@ post '/memos' do
   title = params[:title]
   content = params[:content]
 
-  @connect.exec_params('INSERT INTO memos(title, content) VALUES ($1, $2);', [title, content])
-
-  result = @connect.exec('SELECT lastval()')
-  id = result[0]['lastval']
+  result = @connect.exec_params('INSERT INTO memos (title, content) VALUES ($1, $2) RETURNING id', [title, content])
+  id = result[0]['id']
 
   redirect "/memos/#{id}"
 end
