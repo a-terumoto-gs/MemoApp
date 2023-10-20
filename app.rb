@@ -13,13 +13,16 @@ before do
   connect
 end
 
+configure  do
+  connect.exec('CREATE TABLE IF NOT EXISTS memos (id serial PRIMARY KEY, title text, content text)')
+end
+
 def fetch_memo(id)
   result = @connect.exec_params('SELECT * FROM memos WHERE id = $1;', [id])
   result[0]
 end
 
 get '/memos' do
-  @connect.exec('CREATE TABLE IF NOT EXISTS memos (id serial PRIMARY KEY, title text, content text)')
   @memos = @connect.exec('SELECT * FROM memos ORDER BY id ASC')
   erb :index
 end
