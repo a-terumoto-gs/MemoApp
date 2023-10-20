@@ -1,5 +1,4 @@
 GEM
-  remote: https://rubygems.org/
   specs:
     actionview (7.0.8)
       activesupport (= 7.0.8)

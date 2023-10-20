@@ -32,20 +32,12 @@ get '/memos/new' do
 end
 
 get '/memos/:id' do
-  memo = fetch_memo(params[:id])
-  @memo = {
-    title: memo['title'],
-    content: memo['content']
-  }
+  @memo = fetch_memo(params[:id])
   erb :show
 end
 
 get '/memos/:id/edit' do
-  memo = fetch_memo(params[:id])
-  @memo = {
-    title: memo['title'],
-    content: memo['content']
-  }
+  @memo = fetch_memo(params[:id])
   erb :edit
 end
 
