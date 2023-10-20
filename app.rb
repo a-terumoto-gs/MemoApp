@@ -13,7 +13,7 @@ before do
   connect
 end
 
-configure  do
+configure do
   connect.exec('CREATE TABLE IF NOT EXISTS memos (id serial PRIMARY KEY, title text, content text)')
 end
 
