@@ -5,25 +5,21 @@ require 'sinatra/reloader'
 require 'pg'
 require 'cgi'
 
-def connect
-  @connect ||= PG.connect(dbname: 'memoapp')
-end
-
-before do
-  connect
+def connection
+  connection ||= PG.connect(dbname: 'memoapp')
 end
 
 configure do
-  connect.exec('CREATE TABLE IF NOT EXISTS memos (id serial PRIMARY KEY, title text, content text)')
+  connection.exec('CREATE TABLE IF NOT EXISTS memos (id serial PRIMARY KEY, title text, content text)')
 end
 
 def fetch_memo(id)
-  result = @connect.exec_params('SELECT * FROM memos WHERE id = $1;', [id])
+  result = connection.exec_params('SELECT * FROM memos WHERE id = $1;', [id])
   result[0]
 end
 
 get '/memos' do
-  @memos = @connect.exec('SELECT * FROM memos ORDER BY id ASC')
+  @memos = connection.exec('SELECT * FROM memos ORDER BY id ASC')
   erb :index
 end
 
@@ -45,7 +41,7 @@ post '/memos' do
   title = params[:title]
   content = params[:content]
 
-  result = @connect.exec_params('INSERT INTO memos (title, content) VALUES ($1, $2) RETURNING id', [title, content])
+  result = connection.exec_params('INSERT INTO memos (title, content) VALUES ($1, $2) RETURNING id', [title, content])
   id = result[0]['id']
 
   redirect "/memos/#{id}"
@@ -56,7 +52,7 @@ patch '/memos/:id' do
   content = params[:content]
   id = params[:id]
 
-  @connect.exec_params('UPDATE memos SET title = $1, content = $2 WHERE id = $3;', [title, content, id])
+  connection.exec_params('UPDATE memos SET title = $1, content = $2 WHERE id = $3;', [title, content, id])
 
   redirect "/memos/#{id}"
 end
@@ -64,7 +60,7 @@ end
 delete '/memos/:id' do
   id = params[:id]
 
-  @connect.exec_params('DELETE FROM memos WHERE id = $1;', [id])
+  connection.exec_params('DELETE FROM memos WHERE id = $1;', [id])
 
   redirect '/memos'
 end
