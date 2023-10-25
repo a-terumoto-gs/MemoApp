@@ -6,7 +6,7 @@ require 'pg'
 require 'cgi'
 
 def connection
-  connection ||= PG.connect(dbname: 'memoapp')
+  PG.connect(dbname: 'memoapp')
 end
 
 configure do
