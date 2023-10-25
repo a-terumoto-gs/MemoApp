@@ -1,5 +1,6 @@
 <form method="POST" action="/memos/<%= @memo['id'] %>">
   <h2>編集</h2>
+  
   <div class="container">
     <label for="title">タイトル</label>
     <input type="text" id="title" name="title" value="<%= CGI.escapeHTML(@memo['title']) %>" class="input-form" required>
