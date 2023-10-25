@@ -44,7 +44,7 @@ post '/memos' do
   result = connection.exec_params('INSERT INTO memos (title, content) VALUES ($1, $2) RETURNING id', [title, content])
   id = result[0]['id']
 
-  redirect '/memos/#{id}'
+  redirect "/memos/#{id}"
 end
 
 patch '/memos/:id' do
@@ -54,7 +54,7 @@ patch '/memos/:id' do
 
   connection.exec_params('UPDATE memos SET title = $1, content = $2 WHERE id = $3;', [title, content, id])
 
-  redirect '/memos/#{id}'
+  redirect "/memos/#{id}"
 end
 
 delete '/memos/:id' do
