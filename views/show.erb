@@ -1,5 +1,5 @@
   <label>タイトル</label>
-  <p class="content"><%= CGI.escapeHTML(@memo['title']).force_encoding("UTF-8") %></p>
+  <p class="content"><%= CGI.escapeHTML(@memo['title']) %></p>
 
   <label>内容</label>
   <p class="content"><%= CGI.escapeHTML(@memo['content']) %></p>
