@@ -1,35 +1,34 @@
-
-.buttons{
+.buttons {
   display: inline-block;
   margin: 0px 10px;
 }
 
-.input-form{
+.input-form {
   display: flex;
-  margin-bottom: 10px; 
-  width: 50%; 
+  margin-bottom: 10px;
+  width: 50%;
   box-sizing: border-box;
 }
 
-textarea.input-form{
+textarea.input-form {
   height: 150px;
 }
 
-.container{
+.container {
   display: flex;
   flex-direction: column;
 }
 
-.update-button{
-  margin-top: 10px; 
+.update-button {
+  margin-top: 10px;
 }
 
-.content{
+.content {
   border: 1px solid #000;
-  width: 50%; 
+  width: 50%;
 }
 
-.new-button{
+.new-button {
   display: inline-block;
   width: auto;
   padding: 5px;

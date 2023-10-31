@@ -3,9 +3,9 @@
 </div>
 
 <ol>
-  <% @memos.each do |id, memo| %>
+  <% @memos.each do |memo| %>
     <li>
-      <a href="/memos/<%= id %>"><%= CGI.escapeHTML(memo["title"]) %></a>
+      <a href="/memos/<%= memo['id'] %>"><%= CGI.escapeHTML(memo['title']) %></a>
     </li>
   <% end %>
 </ol>

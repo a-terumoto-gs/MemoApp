@@ -2,8 +2,8 @@
 
 source 'https://rubygems.org'
 
-# gem "rails"
 gem 'erb_lint', require: false
+gem 'pg'
 gem 'rubocop', require: false
 gem 'sinatra'
 gem 'sinatra-contrib'
