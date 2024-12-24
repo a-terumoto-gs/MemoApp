@@ -1,11 +1,16 @@
-<div>
-  <a href="/memos/new" class="new-button">新規作成</a>
-</div>
+<div class="index">
+  <div class"create">
+    <a href="/memos/new" class="button">新規作成</a>
+  </div>
 
-<ol>
-  <% @memos.each do |id, memo| %>
-    <li>
-      <a href="/memos/<%= id %>"><%= CGI.escapeHTML(memo["title"]) %></a>
-    </li>
-  <% end %>
-</ol>
+  <div class="list">
+      <% @memos.each do |id, memo| %>
+        <% next if memo["title"].to_s.strip.empty? && memo["content"].to_s.strip.empty? %>
+        
+        <div class="show-form memo">
+          <a href="/memos/<%= id %>" class="title"><%= CGI.escapeHTML(memo["title"]) %></a>
+          <%= CGI.escapeHTML(memo["content"]) %>
+        </div>
+      <% end %>
+  </div>
+</div>

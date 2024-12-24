@@ -1,13 +1,12 @@
 <form method="POST" action="/memos">
-  <h2>新規作成</h2>
-  <div class="container">
-    <label class="title">タイトル</label>
+  <h2 class="subtitle">新規作成</h2>
+  <div class="create-form">
+    <label for="title">タイトル</label>
       <input type="text" id="title" name="title" class="input-form">
-
     <label for="content">内容</label>
-    <textarea id="content" name="content" class="input-form"></textarea>
+      <textarea id="content" name="content" class="input-form content"></textarea>
   </div>
   <div>
-    <input type="submit" value="保存" class="update-button">
+    <input type="submit" value="保存" class="button">
   </div>
 </form>

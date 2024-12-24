@@ -1,15 +1,15 @@
 <form method="POST" action="/memos/<%= params[:id] %>">
-<h2>編集</h2>
-<div class="container">
+<h2 class="subtitle">編集</h2>
+<div class="edit-form">
   <label for="title">タイトル</label>
   <input type="text" id="title" name="title" value="<%= CGI.escapeHTML(@title) %>" class="input-form">
 
   <label for="content">内容</label>
-  <textarea id="content" name="content" class="input-form"><%= CGI.escapeHTML(@content) %></textarea>
+  <textarea id="content" name="content" class="input-form content"><%= CGI.escapeHTML(@content) %></textarea>
 </div>
 
 <div>
   <input type="hidden" name="_method" value="PATCH">
-  <input type="submit" value="変更" class="update-button">
+  <input type="submit" value="変更" class="button">
 </div>
 </form>
