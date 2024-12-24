@@ -1,24 +1,19 @@
-  <label>タイトル</label>
-  <p class="content"><%= CGI.escapeHTML(@title) %></p>
+<div class="show-form">
+  <p><%= CGI.escapeHTML(@title) %></p>
+  <p><%= CGI.escapeHTML(@content) %></p>
 
-  <label>内容</label>
-  <p class="content"><%= CGI.escapeHTML(@content) %></p>
+  <div class="button-container">
+    <form method="GET" action="/memos/<%= params[:id] %>/edit">
+      <input type="submit" value="編集" class="button">
+    </form>
 
-<div class="buttons">
-  <form method="GET" action="/memos/<%= params[:id] %>/edit">
-    <input type="submit" value="編集">
-  </form>
-</div>
+    <form method="POST" action="/memos/<%= params[:id] %>">
+      <input type="hidden" name="_method" value="DELETE">
+      <input type="submit" value="削除" class="button">
+    </form>
 
-<div class="buttons">
-  <form method="POST" action="/memos/<%= params[:id] %>">
-    <input type="hidden" name="_method" value="DELETE">
-    <input type="submit" value="削除">
-  </form>
-</div>
-
-<div class="buttons">
-  <form method="GET" action="/memos">
-  <input type="submit" value="戻る">
-  </form>
+    <form method="GET" action="/memos">
+      <input type="submit" value="戻る" class="button">
+    </form>
+  </div>
 </div>
